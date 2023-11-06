@@ -1,0 +1,15 @@
+.my-center{
+    margin:0 auto;
+}
+.border{border:1px solid white}
+
+.mw-50{
+    max-width:50%
+}
+/*my align center*/
+.ma-center{
+    margin:0 auto
+}
+.mw-120{
+    width:120pt;
+}

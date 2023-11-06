@@ -2,38 +2,31 @@
 @section('body')
 
 
-    <section class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image: url('/public/images/bg_1.jpg');">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row slider-text align-items-center" data-scrollax-parent="true">
-                    <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Dentistry
-                            in a Calm and Relaxed Environment</h1>
-                        <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river
-                            named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#"
-                                class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <section class="home-slider owl-carousel">
+            @foreach($sliders as $slider)
+            @php
+                $image = $slider->image;
+            @endphp
+{{--            <img src="{{Storage::disk('public')->url($image['file_path'])}}"/>--}}
+            <div class="slider-item" style="background-image: url('{{Storage::disk('public')->url($image['file_path'])}}')">
+                <div class="overlay"></div>
 
-        <div class="slider-item" style="background-image: url('/public/images/bg_2.jpg');">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row slider-text align-items-center" data-scrollax-parent="true">
-                    <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Modern Achieve
-                            Your Desired Perfect Smile</h1>
-                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary
-                            regelialia.</p>
-                        <p><a href="#" class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
+                <div class="container">
+                    <div class="row slider-text align-items-center" data-scrollax-parent="true">
+                        <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$slider->text->heading}}</h1>
+                            <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$slider->text->description}}</p>
+                            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                                <a href="#"  class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+
+            @endforeach
+        </section>
+
+
 
     <section class="ftco-intro">
         <div class="container">
@@ -60,33 +53,43 @@
                 </div>
                 <div class="col-md-6 color-3 p-4">
                     <h3 class="mb-2">Make an Appointment</h3>
-                    <form action="#" class="appointment-form">
+                    <form action="/make/appointment" class="appointment-form" method="post" >
+                        @csrf
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="select-wrap">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Department</option>
-                                            <option value="">Teeth Whitening</option>
-                                            <option value="">Teeth CLeaning</option>
-                                            <option value="">Quality Brackets</option>
-                                            <option value="">Modern Anesthetic</option>
+                                        <select name="service" id="" class="form-control">
+                                            <option value="Not Choosen">Services</option>
+                                            <option value="Whitening">Teeth Whitening</option>
+                                            <option value="Cleaning">Teeth CLeaning</option>
+                                            <option value="Brackets">Quality Brackets</option>
+                                            <option value="Anesthetic">Modern Anesthetic</option>
                                         </select>
+                                        @error('service')
+                                        <p class="error-text">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="icon"><span class="icon-user"></span></div>
-                                    <input type="text" class="form-control" id="appointment_name" placeholder="Name">
+                                    <input type="text" class="form-control" id="appointment_name" placeholder="Name" name="name">
+                                    @error('name')
+                                    <p class="error-text">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="icon"><span class="icon-paper-plane"></span></div>
-                                    <input type="text" class="form-control" id="appointment_email"
+                                    <input type="text" class="form-control" id="appointment_email" name="email"
                                         placeholder="Email">
+                                    @error('email')
+                                    <p class="error-text">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -94,25 +97,35 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="icon"><span class="ion-ios-calendar"></span></div>
-                                    <input type="text" class="form-control appointment_date" placeholder="Date">
+                                    <input type="text" class="form-control appointment_date" placeholder="Date" name="date" >
+                                    @error('date')
+                                    <p class="error-text">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="icon"><span class="ion-ios-clock"></span></div>
-                                    <input type="text" class="form-control appointment_time" placeholder="Time">
+                                    <input type="text" class="form-control appointment_time" placeholder="Time" name="time">
+                                    @error('time')
+                                    <p class="error-text">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="icon"><span class="icon-phone2"></span></div>
-                                    <input type="text" class="form-control" id="phone" placeholder="Phone">
+                                    <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
+                                    @error('phone')
+                                    <p class="error-text">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Make an Appointment" class="btn btn-primary">
+{{--                            <input type="submit" value="Make an Appointment" class="btn btn-primary">--}}
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
