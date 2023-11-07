@@ -24,8 +24,8 @@ class AddSliderRequest extends FormRequest
 //        |dimensions:min_width=500,min_height=500
         return [
             'slider-image' =>'required|image|mimes:jpg,png,jpeg',
-            'heading'=>'required|max:15',
-            'description'=>'required|max:25'
+            'heading'=>'required|max:40',
+            'description'=>'required|max:60'
         ];
     }
 }

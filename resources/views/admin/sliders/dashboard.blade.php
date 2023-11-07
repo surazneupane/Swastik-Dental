@@ -27,6 +27,7 @@
                                 <th class="px-4 py-3">Heading</th>
                                 <th class="px-4 py-3">Paragraph</th>
                                 <th class="px-4 py-3">Status</th>
+                                <th class = "px-4 py-3">Action</th>
                             </tr>
                         </thead>
                                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -61,10 +62,15 @@
                                                                        @endif
                                                                </span>
                                                          </td>
+                                                        <td class="px-4 py-3 text-xs">
+                                                            <a href="/sliders/{{$slider->id}}/edit">
+                                                              <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                                                        Edit
+                                                               </span>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                         @endforeach
-
-
                     </table>
                 </div>
 {{--                <div--}}

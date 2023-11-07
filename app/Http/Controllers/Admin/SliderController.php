@@ -27,13 +27,6 @@ class SliderController extends Controller
 
     public function store(AddSliderRequest $request){
 
-
-//        $lastId = DB::table('sliders')
-//            ->select('id')
-//            ->orderBy('id', 'desc')
-//            ->first();
-//        dd($lastId);
-
         $slider = new Slider();
         $slider->status = 0;
         $slider->save();
@@ -54,5 +47,28 @@ class SliderController extends Controller
         return redirect()->back();
     }
 
+    public function edit(Slider $slider){
+//        dd($slider);
+//         $id = $slider->id;
+
+        return view('admin.sliders.edit',[
+            'slider' => $slider->load('image')
+//            'sliders' => $slider::where('id',$id)->with('image')->get()
+
+        ]);
+    }
+
+    public function update(AddSliderRequest $request, Slider $slider)
+    {
+
+        $slider_image = $request->file('slider-image');
+        $filename = uniqid() . '.' . $slider_image->getClientOriginalExtension();
+        Storage::disk('public')->put($filename, file_get_contents($slider_image));
+
+        $slider->image()->update(['file_path'=>$filename]);
+
+        $slider->text()->update(['heading' => $request->input('heading') ]);
+        $slider->text()->update(['description' => $request->input('description')]);
+    }
 
 }

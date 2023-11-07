@@ -25,6 +25,7 @@ Route::get('/blogs', [PublicController::class, 'blogs'])->name('public.blogs');
 Route::get('/blog/{url}', [PublicController::class, 'blog'])->name('public.blog');
 Route::get('/contact', [PublicController::class, 'contact'])->name('public.contact');
 
+
 //Route::post('/make/appointment',function(SaveAppointement $request)
 //{
 //    dd($request);
@@ -49,7 +50,17 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::get('/create-slider',[SliderController::class,'createSlider'])->name('admin.create-slider');
     //
     Route::post('/add/slider-image',[SliderController::class,'store']);
+    //Edit slider
+    Route::put('/edit/{slider}',[SliderController::class,'update']);
+
 
 } );
 
 
+Route::get('/sliders/{slider}/edit',[SliderController::class,'edit']);
+
+//Route::put('/slider/{slider}', [SliderController::class, 'update'])->middleware('auth:admin');
+
+//Route::put('/slider/{slider}',function() {
+//    dd('Route working');
+//});

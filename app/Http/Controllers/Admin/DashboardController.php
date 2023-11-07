@@ -12,10 +12,11 @@ class DashboardController extends Controller
 
     public function show()
     {
-        $sliders = Slider::all();
 
         return view('admin.sliders.dashboard',[
             'sliders' => Slider::with('image')->get()
         ]);
     }
+
+
 }
