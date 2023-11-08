@@ -55,9 +55,20 @@ class PublicController extends Controller
 
     public function reserve(SaveAppointement $request)
     {
+        //Get keys from the checkbox array where value is on
+        $inputData = $request->input();
+        $key = array_keys($inputData,'on');
+        $service ='';
 
+        //Storing array values to single string variable
+        for ($x = 0; $x < count($key); $x++) {
+            $service .= $key[$x];
+            if($x< count($key)-1) {
+                $service .= ',';
+            }
+        }
 
-       //Format input date to YYMMDD
+        //Format input date to YYMMDD
         $inputDate = $request->input('date');
         $inputDate = str_replace("/","",$inputDate);
 
@@ -70,14 +81,6 @@ class PublicController extends Controller
 
         $time = date("H:i", strtotime($inputTime));
 
-        $appointable = new Appointable();
-
-
-        $service = new Service();
-        $service->name = $request->input('service');
-        $service->save();
-
-
 
         $appointment = new Appointment();
         $appointment->name = $request->input('name');
@@ -85,18 +88,9 @@ class PublicController extends Controller
         $appointment->date = $carbonDate;
         $appointment->time = $time;
         $appointment->phone_no = $request->input('phone');
+        $appointment->service = $service;
+
         $appointment->save();
-
-        $service->appointments()->create([
-            'appointable_id' => $service->id,
-            'appointable_type' => get_class($service),
-        ]);
-
-        $appointment->appointments()->create([
-            'appointable_id' => $appointment->id,
-            'appointable_type' => get_class($appointment),
-        ]);
-
 
     }
 

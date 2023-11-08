@@ -15,7 +15,8 @@ class Appointment extends Model
         'phone_no',
         'email',
         'time',
-        'date'
+        'date',
+        'service'
     ];
 
     public function appointments():MorphMany

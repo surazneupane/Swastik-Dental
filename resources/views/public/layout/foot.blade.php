@@ -168,6 +168,27 @@
 <script src="/public/js/google-map.js"></script>
 <script src="/public/js/main.js"></script>
 
+<script>
+    // Toggle the dropdown when the button is clicked
+    function toggleDropdown() {
+        var dropdownContent = document.getElementById("dropdown-content");
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    }
+
+    // Close the dropdown when clicking outside of it
+    window.onclick = function(event) {
+        var dropdown = document.querySelector('.dropdown');
+        if (event.target != dropdown && event.target != dropdown.querySelector('.dropbtn')) {
+            var dropdownContent = document.getElementById("dropdown-content");
+            dropdownContent.style.display = "none";
+        }
+    }
+
+</script>
 </body>
 
 </html>

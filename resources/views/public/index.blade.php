@@ -57,21 +57,31 @@
                         @csrf
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="select-wrap">
-                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="service" id="" class="form-control">
-                                            <option value="Not Choosen">Services</option>
-                                            <option value="Whitening">Teeth Whitening</option>
-                                            <option value="Cleaning">Teeth CLeaning</option>
-                                            <option value="Brackets">Quality Brackets</option>
-                                            <option value="Anesthetic">Modern Anesthetic</option>
-                                        </select>
-                                        @error('service')
-                                        <p class="error-text">{{$message}}</p>
-                                        @enderror
+                                <div class="dropdown">
+                                    <input type="button" class="dropbtn"  value="Select Services" onclick="toggleDropdown()">
+                                    <div id="dropdown-content" class="dropdown-content">
+                                        <label for="option1"><input type="checkbox" id="option1" class="checkbox" name="whitening">Teeth Whitening</label>
+                                        <label for="option2"><input type="checkbox" id="option2" class="checkbox" name="cleaning">Teeth Cleaning</label>
+                                        <label for="option3"><input type="checkbox" id="option3" class="checkbox" name="brackets">Quality Brackets</label>
+                                        <label for="option4"><input type="checkbox" id="option3" class="checkbox" name="anesthetic">Modern Anesthetic</label>
                                     </div>
                                 </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <div class="select-wrap">--}}
+{{--                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>--}}
+{{--                                        <select name="service" id="" class="form-control">--}}
+{{--                                            <option value="Not Choosen">Services</option>--}}
+{{--                                            <option value="Whitening">Teeth Whitening</option>--}}
+{{--                                            <option value="Cleaning">Teeth CLeaning</option>--}}
+{{--                                            <option value="Brackets">Quality Brackets</option>--}}
+{{--                                            <option value="Anesthetic">Modern Anesthetic</option>--}}
+{{--                                        </select>--}}
+{{--                                        --}}
+{{--                                        @error('service')--}}
+{{--                                        <p class="error-text">{{$message}}</p>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">

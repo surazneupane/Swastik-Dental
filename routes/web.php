@@ -26,11 +26,6 @@ Route::get('/blog/{url}', [PublicController::class, 'blog'])->name('public.blog'
 Route::get('/contact', [PublicController::class, 'contact'])->name('public.contact');
 
 
-//Route::post('/make/appointment',function(SaveAppointement $request)
-//{
-//    dd($request);
-//});
-
 Route::post('/make/appointment',[PublicController::class, 'reserve']);
 
 
@@ -40,6 +35,7 @@ Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login'
 Route::post('submit/login', [AuthController::class, 'submitLogin'])->name('admin.login.submit');
 
 Route::prefix('admin')->middleware('admin.auth')->group(function () {
+
     // auth
     Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     // index
@@ -52,6 +48,8 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::post('/add/slider-image',[SliderController::class,'store']);
     //Edit slider
     Route::put('/edit/{slider}',[SliderController::class,'update']);
+    //Appointment
+    Route::get('/appointments' ,[DashboardController::class,'appointment'])->name('admin.appointments');
 
 
 } );
@@ -59,8 +57,3 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
 
 Route::get('/sliders/{slider}/edit',[SliderController::class,'edit']);
 
-//Route::put('/slider/{slider}', [SliderController::class, 'update'])->middleware('auth:admin');
-
-//Route::put('/slider/{slider}',function() {
-//    dd('Route working');
-//});

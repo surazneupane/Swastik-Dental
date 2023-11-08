@@ -23,7 +23,10 @@ class SaveAppointement extends FormRequest
     {
         return [
             //
-            'service' => 'required',
+             'whitening' => 'nullable',
+            'cleaning' => 'nullable',
+            'brackets' => 'nullable',
+            'anesthetic'=>'nullable',
             'name' => 'required|max:20',
             'email'=> 'nullable|email',
             'date'=> 'required|max:50',
