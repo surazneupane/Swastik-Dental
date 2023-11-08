@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\PublicController;
+use http\Env\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\SaveAppointement;
 /*
@@ -25,7 +26,7 @@ Route::get('/blogs', [PublicController::class, 'blogs'])->name('public.blogs');
 Route::get('/blog/{url}', [PublicController::class, 'blog'])->name('public.blog');
 Route::get('/contact', [PublicController::class, 'contact'])->name('public.contact');
 
-
+Route::get('/sliders/{slider}/edit',[SliderController::class,'edit']);
 Route::post('/make/appointment',[PublicController::class, 'reserve']);
 
 
@@ -55,5 +56,6 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
 } );
 
 
-Route::get('/sliders/{slider}/edit',[SliderController::class,'edit']);
+Route::post('/appointment/filter',[DashboardController::class,'filter']);
+
 

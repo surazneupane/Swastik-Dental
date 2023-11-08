@@ -7,7 +7,7 @@
     <title>{{ config('app.name') }} Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('admin/css/tailwind.output.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/css/custom.css') }}" />
     <script src="{{ asset('admin/js/alpinejs/dist/alpine.js') }}"></script>
     <script src="{{ asset('admin/js/init-alpine.js') }}"></script>
 </head>

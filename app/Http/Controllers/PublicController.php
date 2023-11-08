@@ -16,7 +16,7 @@ class PublicController extends Controller
 
     public function show()
     {
-        $sliders = Slider::all();
+//        $sliders = Slider::all();
         return view('public.index',[
             'sliders' => Slider::with('image')->get()
         ] ) ;
