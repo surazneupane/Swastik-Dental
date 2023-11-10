@@ -19,9 +19,4 @@ class Appointment extends Model
         'service'
     ];
 
-    public function appointments():MorphMany
-    {
-        return $this->morphMany(Appointable::class,'appointable');
-    }
-
 }

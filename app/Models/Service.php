@@ -10,8 +10,13 @@ class Service extends Model
     use HasFactory;
 
     protected $fillable =[
+        'id',
         'title',
-        'description',
-        'icon'
+        'description'
     ];
+
+    public function image(){
+        return $this->morphOne(Image::class,'imageable');
+    }
+
 }

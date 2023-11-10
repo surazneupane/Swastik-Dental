@@ -16,10 +16,10 @@ class PublicController extends Controller
     public function show()
     {
 //        $sliders = Slider::all();
-        $service = Service::all();
+//        $service = Service::all();
         return view('public.index',[
             'sliders' => Slider::with('image')->get(),
-             'services' =>$service
+             'services' =>Service::with('image')->get()
         ] ) ;
     }
 

@@ -152,11 +152,14 @@
                 </div>
             </div>
             @foreach($services as $service)
+                @php
+                    $icon = $service->image;
+                @endphp
             <div class="row">
                 <div class="col-md-3 d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services d-block text-center">
                         <div class="icon d-flex justify-content-center align-items-center">
-                            <img class="w-24" src="{{Storage::disk('public')->url($service->icon)}}" alt="" class="logo"/>
+                            <img class="w-24" src="{{Storage::disk('public')->url($icon['file_path'])}}" alt="" class="logo"/>
                         </div>
                         <div class="media-body p-2 mt-3">
                             <h3 class="heading">{{$service->title}}</h3>
