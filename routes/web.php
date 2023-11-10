@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ServiceController;
 use http\Env\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\SaveAppointement;
@@ -51,7 +52,15 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::put('/edit/{slider}',[SliderController::class,'update']);
     //Appointment
     Route::get('/appointments' ,[DashboardController::class,'appointment'])->name('admin.appointments');
+    //Services
+    Route::get('/services',[ServiceController::class,'services'])->name('admin.services');
 
+    //Add services
+    Route::post('/add/services',[ServiceController::class,'store']);
+
+//    Route::get('/services', function(){
+//      dd("service route working");
+//    });
 
 } );
 

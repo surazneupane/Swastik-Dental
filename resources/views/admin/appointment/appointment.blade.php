@@ -7,7 +7,7 @@
         <div class="w-full overflow-x-auto">
 
             <div class="filter bg-purple-600 mw-80 ma-center mb-10 h-12">
-                <form method="post" action="/appointment/filter" >
+                <form method="post" action="/appointment/filter" enctype="multipart/form-data">
                     @csrf
 {{--                <h1 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Filter appointment:</h1>--}}
                 <div class="filter-options">

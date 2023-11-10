@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\SaveAppointement;
-use App\Models\Appointable;
 use App\Models\Appointment;
 use App\Models\Service;
 use App\Models\Slider;
@@ -17,8 +16,10 @@ class PublicController extends Controller
     public function show()
     {
 //        $sliders = Slider::all();
+        $service = Service::all();
         return view('public.index',[
-            'sliders' => Slider::with('image')->get()
+            'sliders' => Slider::with('image')->get(),
+             'services' =>$service
         ] ) ;
     }
 

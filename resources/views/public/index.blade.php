@@ -151,56 +151,21 @@
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                 </div>
             </div>
+            @foreach($services as $service)
             <div class="row">
                 <div class="col-md-3 d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services d-block text-center">
                         <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-tooth-1"></span>
+                            <img class="w-24" src="{{Storage::disk('public')->url($service->icon)}}" alt="" class="logo"/>
                         </div>
                         <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Teeth Whitening</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-dental-care"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Teeth Cleaning</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-tooth-with-braces"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Quality Brackets</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-anesthesia"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Modern Anesthetic</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
+                            <h3 class="heading">{{$service->title}}</h3>
+                            <p>{{$service->description}}</p>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
         <div class="container-wrap mt-5">
             <div class="row d-flex no-gutters">

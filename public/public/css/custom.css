@@ -111,3 +111,9 @@ input:focus {
     display: block;
 }
 
+.add-service label{
+    color:#fff;
+}
+.add-service .form-group{
+    margin-top:15pt
+}

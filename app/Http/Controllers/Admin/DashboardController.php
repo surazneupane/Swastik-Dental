@@ -30,29 +30,6 @@ class DashboardController extends Controller
 
     public function filter(Request $request)
     {
-//            $starting_time = $request->starting_time;
-//            $ending_time = $request->ending_time;
-//
-//
-//
-////            $starting_time = preg_replace('/\s*:\s*/', ':', $starting_time);
-////            $ending_time = preg_replace('/\s*:\s*/', ':', $ending_time);
-//
-//            $starting_time = date("H:i", strtotime($starting_time));
-//            dd($starting_time);
-////            $starting_time .= ':00';
-//
-//            $ending_time = date("H:i", strtotime($ending_time));
-////            $ending_time .= ':00';
-//
-////            dd($starting_time,$ending_time);
-//
-//
-//        $appointment = Appointment::where('time', '>=', '10:00:00')->get();
-//
-//        dd($appointment);
-
-
 
         $appointment = Appointment::where(function ($query) use ($request) {
 
@@ -78,7 +55,6 @@ class DashboardController extends Controller
 
         return view('admin.appointment.appointment', [
             'appointments' => $appointment]);
-
     }
 }
 
