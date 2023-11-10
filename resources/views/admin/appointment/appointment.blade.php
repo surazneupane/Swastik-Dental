@@ -1,48 +1,43 @@
 @extends('admin.layouts.main')
 @section('body')
-    <h1
-        class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
-    >
-        Appointments Made:
-    </h1>
+
 <main class="h-full pb-16 overflow-y-auto">
 
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
-            <div class="filter">
+
+            <div class="filter bg-purple-600 mw-80 ma-center mb-10 h-12">
                 <form method="post" action="/appointment/filter" >
                     @csrf
-                <h2>Filter appointment:</h2>
-                <div>
-{{--                    <div>--}}
-{{--                        <h3>Service</h3>--}}
-{{--                        <ul>--}}
-{{--                            <li><input type="checkbox" name="whitening">Teeth Whitening</li>--}}
-{{--                            <li><input type="checkbox"  name="cleaning">Teeth Cleaning</li>--}}
-{{--                            <li><input type="checkbox"  name="brackets">Quality Brackets</li>--}}
-{{--                            <li><input type="checkbox" name="anesthetic">Modern Anesthetic</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-                    <div>
-                        <h3>Date</h3>
-                        <label for="from_date">From</label>
-                        <input type="date" id="from_date" name="from_date">
-                        <label for="to_date">To</label>
-                        <input type ="date" id ="to_date" name="to_date">
+{{--                <h1 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Filter appointment:</h1>--}}
+                <div class="filter-options">
+
+                    <div class="options option-one">
+                        <ul>
+                            <li><h3>Date&colon;</h3></li>
+                            <li> <input type="date" id="starting_date" name="starting_date"></li>
+                            <li><span>To</span></li>
+                            <li><input type ="date" id ="ending_date" name="ending_date"></li>
+                        </ul>
                     </div>
-                    <div>
-                        <h3>Time</h3>
-                        <label for ="starting_time">From</label>
-                        <input type="time" id="starting_time" name="starting_time">
-                        <label for = "ending_time">To</label>
-                        <input type="time" id="ending_time" name="ending_time">
+                    <div class="options option-two">
+                        <ul>
+                            <li><h3>Time&colon;</h3></li>
+                            <li> <input type="time" id="starting_time" name="starting_time"></li>
+                            <li><span>To</span></li>
+                            <li> <input type="time" id="ending_time" name="ending_time"></li>
+                        </ul>
                     </div>
                 </div>
-                 <button type="submit">Filter</button>
+                 <button type="submit">Filter Appointment</button>
+                    <div class="clearfix"></div>
                 </form>
+
             </div>
 
-            <table class="w-full whitespace-no-wrap">
+            <h2 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 ml-6" >Appointments Made:</h2>
+
+            <table class="w-full whitespace-no-wrap  ">
                 <thead>
                 <tr
                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"

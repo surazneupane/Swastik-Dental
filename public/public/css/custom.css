@@ -13,6 +13,66 @@
 .mw-120{
     width:120pt;
 }
+.mw-80{
+    width:80%
+}
+.mb-10{
+    border-radius: 10pt;
+}
+.mt-50{
+    margin-top:50pt
+}
+
+.filter{
+    margin-top:40pt;
+    margin-bottom:40pt;
+
+}
+.filter input[type="date"],
+.filter input[type="time"]
+{
+    outline: 0;
+    background: rgba(82, 42, 179,.3);
+    height: 20pt;
+    border-bottom:1px solid rgb(43, 19, 102);
+}
+input:focus {
+    border-color: green;
+    outline: 1px dotted #000
+}
+.filter form{
+    padding-top: 9pt;
+    display: block;
+    position: relative;
+    margin-left: 4%;
+    height:20pt
+}
+.filter form button{
+    color:#ead8f9;
+    margin-left: 15pt;
+    font-size: .9em;
+    text-decoration: underline;
+}
+.filter-options h3{
+    color:#ead8f9
+}
+.filter-options ul li{
+    display:inline-block;
+    padding-right:2pt
+}
+.filter-options span{
+    font-size: .8em;
+    font-style: italic;
+    color:#dbbdf4;
+}
+.filter-options .options
+{
+    display:inline-block
+}
+.filter-options {float:left}
+.filter-options .option-two{
+    margin-left:20pt
+}
 
 /* Styles for the dropdown */
 .dropdown {
@@ -50,6 +110,4 @@
 .show {
     display: block;
 }
-.filter{
-    color:#a4a0a0
-}
+
