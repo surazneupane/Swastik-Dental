@@ -5,11 +5,9 @@
 
             <form action="/admin/add/slider-image" method="post" enctype="multipart/form-data">
             @csrf
-                <h2
-                class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-            >
-                Create Slider
-            </h2>
+                <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                    Create Slider
+                </h2>
 
 
             <!-- CTA -->

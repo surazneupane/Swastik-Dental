@@ -7,6 +7,7 @@ use App\Http\Requests\SaveAppointement;
 use App\Models\Appointment;
 use App\Models\Service;
 use App\Models\Slider;
+use App\Models\Staff;
 use Carbon\Carbon;
 
 class PublicController extends Controller
@@ -19,7 +20,8 @@ class PublicController extends Controller
 //        $service = Service::all();
         return view('public.index',[
             'sliders' => Slider::with('image')->get(),
-             'services' =>Service::with('image')->get()
+             'services' =>Service::with('image')->get(),
+            'staffs' => Staff::with('image')->get()
         ] ) ;
     }
 

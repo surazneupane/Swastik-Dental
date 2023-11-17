@@ -227,95 +227,42 @@
                         paradisematic country, in which roasted parts of sentences</p>
                 </div>
             </div>
+
             <div class="row">
+                @foreach($staffs as $staff)
+                    @php
+                         $staff_image = $staff->image;
+                    @endphp
+
                 <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
                     <div class="staff">
-                        <div class="img mb-4" style="background-image: url(/public/images/person_5.jpg);"></div>
+                        <div class="img mb-4" style="background-image: url({{Storage::disk('public')->url($staff_image['file_path'])}});"></div>
+
+{{--                        <img class="w-24" src="{{Storage::disk('public')->url($staff_image['file_path'])}}" alt="" class="logo"/>--}}
                         <div class="info text-center">
-                            <h3><a href="teacher-single.html">Tom Smith</a></h3>
-                            <span class="position">Dentist</span>
+                            <h3>{{$staff->name}}</h3>
+                            <span class="position">{{$staff->position}}</span>
                             <div class="text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+                                <p>{{$staff->about}}</p>
                                 <ul class="ftco-social">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
+                                    @if(isset($staff->twitter))
+                                    <li class="ftco-animate"><a href={{$staff->twitter}}><span class="icon-twitter"></span></a>
                                     </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+                                    @endif
+                                    @if(isset($staff->facebook))
+                                    <li class="ftco-animate"><a href={{$staff->facebook}}><span class="icon-facebook"></span></a>
                                     </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
+                                     @endif
+                                     @if(isset($staff->instagram))
+                                    <li class="ftco-animate"><a href={{$staff->instagram}}><span class="icon-instagram"></span></a>
                                     </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
-                                    </li>
+                                     @endif
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
-                    <div class="staff">
-                        <div class="img mb-4" style="background-image: url(/public/images/person_6.jpg);"></div>
-                        <div class="info text-center">
-                            <h3><a href="teacher-single.html">Mark Wilson</a></h3>
-                            <span class="position">Dentist</span>
-                            <div class="text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-                                <ul class="ftco-social">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
-                    <div class="staff">
-                        <div class="img mb-4" style="background-image: url(/public/images/person_7.jpg);"></div>
-                        <div class="info text-center">
-                            <h3><a href="teacher-single.html">Patrick Jacobson</a></h3>
-                            <span class="position">Dentist</span>
-                            <div class="text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-                                <ul class="ftco-social">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex mb-sm-4 ftco-animate">
-                    <div class="staff">
-                        <div class="img mb-4" style="background-image: url(/public/images/person_8.jpg);"></div>
-                        <div class="info text-center">
-                            <h3><a href="teacher-single.html">Ivan Dorchsner</a></h3>
-                            <span class="position">System Analyst</span>
-                            <div class="text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-                                <ul class="ftco-social">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a>
-                                    </li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="row  mt-5 justify-conten-center">
                 <div class="col-md-8 ftco-animate">

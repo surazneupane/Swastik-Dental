@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServiceController;
-use http\Env\Request;
+use App\Http\Controllers\StaffController;
+use http\Client\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\SaveAppointement;
 /*
@@ -54,17 +55,19 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::get('/appointments' ,[DashboardController::class,'appointment'])->name('admin.appointments');
     //Services
     Route::get('/services',[ServiceController::class,'services'])->name('admin.services');
-
     //Add services
     Route::post('/add/services',[ServiceController::class,'store']);
-
-//    Route::get('/services', function(){
-//      dd("service route working");
-//    });
+    //Staff
+    Route::get('/staffs',[StaffController::class,'show'])->name('admin.staffs');
+    //Show add staff page
+    Route::get('/add-staff',[StaffController::class,'addStaff']);
+    //Store
+    Route::post('/add/staff',[StaffController::class,'store']);
 
 } );
 
-
+//Admin appointment filter
 Route::post('/appointment/filter',[DashboardController::class,'filter']);
 
 
+//At staffController, have to make view and route users to the staff.blade.php
