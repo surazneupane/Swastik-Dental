@@ -38,18 +38,38 @@
             </div>
             <div class="row block-9">
                 <div class="col-md-6 pr-md-5">
-                    <form action="#">
+                    <form action="/public/message" method="post">
+                        @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name">
+                            <input type="text" class="form-control" placeholder="Your Name" name="name" value="{{old('name')}}">
+                            @error('name')
+                            <p class="error-text">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email">
+                            <input type="email" class="form-control" placeholder="Your Email" name="email" value="{{old('email')}}">
+                            @error('email')
+                            <p class="error-text">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
+                            <input type="tel" class="form-control" placeholder="Your Phone" name="phone" value="{{old('phone')}}">
+                            @error('phone')
+                            <p class="error-text">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                            <input type="text" class="form-control" placeholder="Subject" name="subject" value="{{old('subject')}}">
+                            @error('subject')
+                            <p class="error-text">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="body" id="" cols="30" rows="7" class="form-control" placeholder="Message" >{{old('body')}}</textarea>
+                            @error('body')
+                            <p class="error-text">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">

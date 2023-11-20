@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\SaveAppointement;
+use App\Http\Requests\SendMessageRequest;
 use App\Models\Appointment;
+use App\Models\Message;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Staff;
+use App\Models\Testimony;
 use Carbon\Carbon;
 
 class PublicController extends Controller
@@ -21,8 +24,9 @@ class PublicController extends Controller
         return view('public.index',[
             'sliders' => Slider::with('image')->get(),
              'services' =>Service::with('image')->get(),
-            'staffs' => Staff::with('image')->get()
-        ] ) ;
+            'staffs' => Staff::with('image')->get(),
+            'statements' => Testimony::with('image')->get()
+        ]) ;
     }
 
 
@@ -95,6 +99,18 @@ class PublicController extends Controller
 
         $appointment->save();
 
+    }
+    public function send(SendMessageRequest $request){
+//        dd($request);
+        $message = new Message();
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->phone = $request->phone;
+        $message->subject = $request->subject;
+        $message->body = $request->body;
+        $message->save();
+
+        return redirect('/')->with('message','Message sent successfully');
     }
 
 }

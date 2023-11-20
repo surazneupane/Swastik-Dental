@@ -5,19 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+class Testimony extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'id',
+        'quote',
         'name',
         'position',
-        'about',
-        'twitter',
-        'facebook',
-        'instagram'
+        'company'
     ];
 
     public function image(){

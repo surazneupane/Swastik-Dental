@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddStaffRequest extends FormRequest
+class SendMessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,12 @@ class AddStaffRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'staff_image' =>'required|image|mimes:jpg,png,jpeg',
-            'name' =>'required|max:50',
-            'position' => 'required|max:25',
-            'about'=>'required|max:120',
-            'twitter' => 'nullable|url',
-            'facebook' => 'nullable|url',
-            'instagram' => 'nullable|url'
+            'name' => 'required|max:30',
+            'email' => 'nullable|email',
+            'phone' => 'string|required|max:10',
+            'subject' => 'required|max:20',
+            'body' => 'required|max:250'
+            //
         ];
     }
 }

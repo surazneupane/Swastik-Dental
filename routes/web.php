@@ -3,9 +3,11 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TestimonyController;
 use http\Client\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\SaveAppointement;
@@ -27,6 +29,13 @@ Route::get('/doctors', [PublicController::class, 'doctors'])->name('public.docto
 Route::get('/blogs', [PublicController::class, 'blogs'])->name('public.blogs');
 Route::get('/blog/{url}', [PublicController::class, 'blog'])->name('public.blog');
 Route::get('/contact', [PublicController::class, 'contact'])->name('public.contact');
+Route::post('/public/message', [PublicController::class,'send']);
+
+
+//Route::post('/public/message', function(){
+//    dd('route is hit');
+//});
+
 
 Route::get('/sliders/{slider}/edit',[SliderController::class,'edit']);
 Route::post('/make/appointment',[PublicController::class, 'reserve']);
@@ -61,13 +70,47 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::get('/staffs',[StaffController::class,'show'])->name('admin.staffs');
     //Show add staff page
     Route::get('/add-staff',[StaffController::class,'addStaff']);
-    //Store
+    //Staff Store
     Route::post('/add/staff',[StaffController::class,'store']);
+    //Staff Delete
+    Route::delete('/staff/{staff}',[StaffController::class,'delete'])->middleware('auth');
+    //Route to staff edit view
+    Route::get('/staff/{staff}/edit',[StaffController::class,'edit'])->middleware('auth');
+    //Staff edit
+    Route::put('/add/{staff}',[StaffController::class,'update']);
 
+    //Show Inbox page
+    Route::get('/messages',[MessageController::class,'show'] )->name('admin.view.message');
+    //View message
+    Route::get('/message/{id}',[MessageController::class,'more'])->name('admin.message.show');
+    //Delete Message
+    Route::delete('/message/{message}',[MessageController::class,'delete'])->middleware('auth');
+
+    //Show Testimony
+    Route::get('/testimony',[TestimonyController::class,'show'])->name('admin.testimony');
+    //Show Add Testimony page
+    Route::get('/add-testimony',[TestimonyController::class,'addTestimony'])->name('admin.add-testimony');
+    //Save
+    Route::post('/add/testimony',[TestimonyController::class,'store'])->middleware('auth');
+    //Delete
+    Route::delete('/testimony/{testimony}',[TestimonyController::class,'delete'])->middleware('auth');
+
+    //Show edit page
+    Route::get('/testimony/{testimony}/edit',[TestimonyController::class,'edit'])->middleware('auth');;
+    //Update
+    Route::put('/testimony/edit/{testimony}',[TestimonyController::class,'update'])->middleware('auth');
+
+//    Route::put('/testimony/edit/{testimony}', function(\App\Http\Requests\AddTestimonyRequest $request){
+//       dd($request);
+//    });
+//    Route::put('/testimony/edit/{testimony}', function(){
+//        dd('Route is hit');
+//    });
 } );
 
 //Admin appointment filter
 Route::post('/appointment/filter',[DashboardController::class,'filter']);
 
 
-//At staffController, have to make view and route users to the staff.blade.php
+
+

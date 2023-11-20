@@ -41,4 +41,32 @@ class StaffController extends Controller
 
     }
 
+    public function delete(Staff $staff){
+        $staff->delete();
+        return redirect('/')->with('message','Listing Deleted Successfully');
+    }
+    public function edit(Staff $staff){
+        return view('admin.staff.editStaff',[
+            'staff' => $staff->load('image')
+        ]);
+    }
+
+    public function update(AddStaffRequest $request, Staff $staff){
+
+        $staff->name = $request->input('name');
+        $staff->position = $request->input('position');
+        $staff->about = $request->input('about');
+        $staff->twitter = $request->input('twitter');
+        $staff->facebook = $request->input('facebook');
+        $staff->instagram = $request->input('instagram');
+        $staff->save();
+
+        $service_icon = $request->file('staff_image');
+        $filename = uniqid().'.'.$service_icon->getClientOriginalExtension();
+
+        Storage::disk('public')->put($filename,file_get_contents($service_icon));
+
+        $staff->image()->update(['file_path'=>$filename]);
+    }
+
 }
