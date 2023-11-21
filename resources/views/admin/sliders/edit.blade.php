@@ -2,6 +2,7 @@
 @section('body')
     <main class="h-full pb-16 overflow-y-auto">
         <div class="container px-6 mx-auto grid">
+            <a href="{{url()->previous()}}" class="text-blue-500 text-xs mt-16">Return back</a>
             <form action="/admin/edit/{{$slider->id}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -11,19 +12,17 @@
 
                 <!-- CTA -->
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                    <label class="text-sm">
-                        <span class="text-gray-700 dark:text-gray-400">Upload Image</span>
-                    </label>
 
-                    <input class="pl-8" type="file" name="slider-image"  />
                     @php
                         $image = $slider->image;
                     @endphp
-                    <img src="{{Storage::disk('public')->url($image['file_path'])}}"/>
+                    <img class="mw-50" src="{{Storage::disk('public')->url($image['file_path'])}}"/>
+                    <label class="text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Change Image</span>
+                    </label>
 
-{{--                    <img--}}
-{{--                        src="{{$slider->image_one ? asset('storage/'.$beedi->image_one):asset('/images/no-image.png')}}"--}}
-{{--                    />--}}
+                    <input class="pl-8  mt-20" type="file" name="slider-image"  />
+
                     @error('slider-image')
                     <p class="error-text">{{$message}}</p>
                     @enderror

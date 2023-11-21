@@ -9,7 +9,7 @@
                 </h2>
 
                 <a href="{{url('/admin/create-slider')}}"
-                  class="px-4 h-24 text-sm font-medium text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                  class="pt-8 h-8 px-4 h-24 text-sm font-medium text-white transition-colors duration-150 bg-purple-600  border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple mt-20">
                   Add Slider
                   <span class="ml-2" aria-hidden="true">+</span>
                 </a>
@@ -37,7 +37,7 @@
                                                         <td class="px-4 py-3">
                                                             <div class="flex items-center text-sm">
                                                                 <!-- Avatar with inset shadow -->
-                                                                <div class="relative hidden w-56 mr-3 rounded-full md:block">
+                                                                <div class="relative hidden w-50 mr-3 rounded-full md:block w-">
                                                                         @php
                                                                            $image = $slider->image;
                                                                         @endphp

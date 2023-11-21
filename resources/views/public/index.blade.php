@@ -27,7 +27,6 @@
         </section>
 
 
-
     <section class="ftco-intro">
         <div class="container">
             <div class="row no-gutters">
@@ -159,7 +158,7 @@
                 <div class="col-md-3 d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services d-block text-center">
                         <div class="icon d-flex justify-content-center align-items-center">
-                            <img class="w-24" src="{{Storage::disk('public')->url($icon['file_path'])}}" alt="" class="logo"/>
+                            <img class="w-24 mw-100" src="{{Storage::disk('public')->url($icon['file_path'])}}" alt="" class="logo"/>
                         </div>
                         <div class="media-body p-2 mt-3">
                             <h3 class="heading">{{$service->title}}</h3>

@@ -3,6 +3,9 @@
 }
 .border{border:1px solid white}
 
+.mw-100{
+    max-width: 100%;
+}
 .mw-50{
     max-width:50%
 }
@@ -116,4 +119,25 @@ input:focus {
 }
 .add-service .form-group{
     margin-top:15pt
+}
+.mt-20
+{
+    margin-top:20pt
+}
+.pt-8
+{
+    padding-top:4pt
+}
+.error-text{
+    color:#bd2130;
+}
+ul li.active{
+    color:whitesmoke;
+}
+
+.empty-message{
+    color: #C092FD;
+    font-size: 16pt;
+    text-align: center;
+    margin-top: 100pt;
 }

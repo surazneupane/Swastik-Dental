@@ -5,10 +5,10 @@
               {{ config('app.name') }}
           </a>
           <ul class="mt-6">
-              <li class="relative px-6 py-3">
+              <li class="{{request()->routeIs('admin.dashboard')?'active':''}} relative px-6 py-3">
                   <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                       aria-hidden="true"></span>
-                  <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                  <a class=" inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                       href="{{ route('admin.dashboard') }}">
                       <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                           stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,7 +21,7 @@
               </li>
           </ul>
           <ul>
-              <li class="relative px-6 py-3">
+              <li class="{{request()->routeIs('admin.appointments')?'active':''}} relative px-6 py-3">
                   <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                       href="{{route('admin.appointments')}}">
                       <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -33,7 +33,7 @@
                       <span class="ml-4">Appointments</span>
                   </a>
               </li>
-              <li class="relative px-6 py-3">
+              <li class="{{request()->routeIs('admin.services')?'active':''}}  relative px-6 py-3">
                   <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                       href="{{route('admin.services')}}">
                       <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -45,8 +45,8 @@
                       <span class="ml-4">Services</span>
                   </a>
               </li>
-              <li class="relative px-6 py-3">
-                  <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              <li class="{{request()->routeIs('admin.staffs')?'active':''}} relative px-6 py-3">
+                  <a class=" inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                       href="{{route('admin.staffs')}}">
                       <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                           stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,8 +56,8 @@
                       <span class="ml-4">Staffs</span>
                   </a>
               </li>
-              <li class="relative px-6 py-3">
-                  <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              <li class="{{request()->routeIs('admin.view.message')?'active':''}} relative px-6 py-3">
+                  <a class=" inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                       href="{{route('admin.view.message')}}">
                       <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                           stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,7 +68,7 @@
                       <span class="ml-4">Messages</span>
                   </a>
               </li>
-              <li class="relative px-6 py-3">
+              <li class="{{request()->routeIs('admin.testimony')?'active':''}} relative px-6 py-3">
                   <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                       href="{{route('admin.testimony')}}">
                       <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
