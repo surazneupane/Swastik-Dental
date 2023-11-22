@@ -40,6 +40,10 @@ Route::post('/public/message', [PublicController::class,'send']);
 Route::get('/sliders/{slider}/edit',[SliderController::class,'edit']);
 Route::post('/make/appointment',[PublicController::class, 'reserve']);
 
+//Route::post('/make/appointment',function(){
+//    dd('route is hit');
+//});
+
 
 
 // Admin

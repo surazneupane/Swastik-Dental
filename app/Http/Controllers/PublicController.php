@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveAppointement;
 use App\Http\Requests\SendMessageRequest;
+use App\Mail\AppointmentSuccessfulMail;
 use App\Models\Appointment;
 use App\Models\Message;
 use App\Models\Service;
@@ -12,6 +13,8 @@ use App\Models\Slider;
 use App\Models\Staff;
 use App\Models\Testimony;
 use Carbon\Carbon;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
@@ -98,6 +101,8 @@ class PublicController extends Controller
         $appointment->service = $service;
 
         $appointment->save();
+
+        Mail::to($request->input('email'))->send(new AppointmentSuccessfulMail() );
 
     }
     public function send(SendMessageRequest $request){
