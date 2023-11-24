@@ -65,22 +65,7 @@
                                         <label for="option4"><input type="checkbox" id="option3" class="checkbox" name="anesthetic">Modern Anesthetic</label>
                                     </div>
                                 </div>
-{{--                                <div class="form-group">--}}
-{{--                                    <div class="select-wrap">--}}
-{{--                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>--}}
-{{--                                        <select name="service" id="" class="form-control">--}}
-{{--                                            <option value="Not Choosen">Services</option>--}}
-{{--                                            <option value="Whitening">Teeth Whitening</option>--}}
-{{--                                            <option value="Cleaning">Teeth CLeaning</option>--}}
-{{--                                            <option value="Brackets">Quality Brackets</option>--}}
-{{--                                            <option value="Anesthetic">Modern Anesthetic</option>--}}
-{{--                                        </select>--}}
-{{--                                        --}}
-{{--                                        @error('service')--}}
-{{--                                        <p class="error-text">{{$message}}</p>--}}
-{{--                                        @enderror--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
@@ -154,8 +139,8 @@
                 @php
                     $icon = $service->image;
                 @endphp
-            <div class="row">
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="row mw-24 inline-block ml-2">
+                <div class="d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services d-block text-center">
                         <div class="icon d-flex justify-content-center align-items-center">
                             <img class="w-24 mw-100" src="{{Storage::disk('public')->url($icon['file_path'])}}" alt="" class="logo"/>

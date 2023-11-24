@@ -12,8 +12,12 @@ use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Staff;
 use App\Models\Testimony;
+use App\Models\User;
+use App\Notifications\SendMessageSuccessful;
 use Carbon\Carbon;
 use Illuminate\Notifications\Notification;
+use App\Notifications\AppointmentMade;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
@@ -65,7 +69,8 @@ class PublicController extends Controller
 
     public function reserve(SaveAppointement $request)
     {
-        //Get keys from the checkbox array where value is on
+         //Get keys from the checkbox array where value is on
+
         $inputData = $request->input();
         $key = array_keys($inputData,'on');
         $service ='';
@@ -102,8 +107,14 @@ class PublicController extends Controller
 
         $appointment->save();
 
-        Mail::to($request->input('email'))->send(new AppointmentSuccessfulMail() );
+        if($request->input('email') != null){
+         Mail::to($request->input('email'))->send(new AppointmentSuccessfulMail() );
+        }
 
+         User::where('name','Admin')->get()->first()->notify(new AppointmentMade($appointment));
+
+
+        return redirect('/')->with('message','Appointment made successfully');
     }
     public function send(SendMessageRequest $request){
 //        dd($request);
@@ -114,6 +125,8 @@ class PublicController extends Controller
         $message->subject = $request->subject;
         $message->body = $request->body;
         $message->save();
+
+        User::where('name','Admin')->get()->first()->notify(new SendMessageSuccessful($message));
 
         return redirect('/')->with('message','Message sent successfully');
     }

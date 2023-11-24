@@ -29,7 +29,7 @@ class AppointmentSuccessfulMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Appointment Successful Mail',
+            subject: 'Appointment scheduled.',
         );
     }
 

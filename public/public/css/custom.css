@@ -19,13 +19,21 @@
 .mw-80{
     width:80%
 }
+.mw-24{
+    width:24%
+}
+.inline-block{
+    display:inline-block;
+}
 .mb-10{
     border-radius: 10pt;
 }
 .mt-50{
     margin-top:50pt
 }
-
+.ml-2{
+    margin-left:3%
+}
 .filter{
     margin-top:40pt;
     margin-bottom:40pt;

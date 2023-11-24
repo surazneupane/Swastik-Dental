@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
-    //
+
+    public function show(){
+        return view ('admin.sliders.slider',
+           [ 'sliders' => Slider::with('image')->get()]);
+    }
     public function index()
     {
         $sliders = Slider::orderBy('created_at')->paginate(10);

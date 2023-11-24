@@ -44,7 +44,10 @@ Route::post('/make/appointment',[PublicController::class, 'reserve']);
 //    dd('route is hit');
 //});
 
-
+Route::get('test-notification', [App\Http\Controllers\TestingController::class, 'store']);
+//Route::get('test-notification',function(){
+//   dd('Route is hit');
+//});
 
 // Admin
 Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login');
@@ -103,6 +106,9 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::get('/testimony/{testimony}/edit',[TestimonyController::class,'edit'])->middleware('auth');;
     //Update
     Route::put('/testimony/edit/{testimony}',[TestimonyController::class,'update'])->middleware('auth');
+
+    //Show Sliders
+    Route::get('/slider',[SliderController::class,'show'])->name('admin.slider');
 
 //    Route::put('/testimony/edit/{testimony}', function(\App\Http\Requests\AddTestimonyRequest $request){
 //       dd($request);
