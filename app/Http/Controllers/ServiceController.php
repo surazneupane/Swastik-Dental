@@ -12,10 +12,18 @@ class ServiceController extends Controller
 {
     //
 
-    public function services(){
-        return view('admin.services.services');
+    public function show(){
+        return view('admin.services.services',[
+            'services' => Service::all()
+        ]);
     }
-
+   public function viewAddService(){
+        return view('admin.services.addServices');
+   }
+    public function delete(Service $service)
+    {
+        $service->delete();
+    }
     public function store(AddServiceRequest $request ){
 
           $title = $request->title;

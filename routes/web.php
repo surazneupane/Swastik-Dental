@@ -70,9 +70,16 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     //Appointment
     Route::get('/appointments' ,[DashboardController::class,'appointment'])->name('admin.appointments');
     //Services
-    Route::get('/services',[ServiceController::class,'services'])->name('admin.services');
+    Route::get('/services',[ServiceController::class,'show'])->name('admin.services');
+    //View add service page
+    Route::get('/add-services',[ServiceController::class,'viewAddService'])->name('admin.add-services');
     //Add services
     Route::post('/add/services',[ServiceController::class,'store']);
+    //Delete
+    Route::delete('/services/{service}',[ServiceController::class,'delete'])->middleware('auth');
+
+
+
     //Staff
     Route::get('/staffs',[StaffController::class,'show'])->name('admin.staffs');
     //Show add staff page

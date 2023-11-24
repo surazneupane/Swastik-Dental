@@ -20,7 +20,7 @@
     width:80%
 }
 .mw-24{
-    width:24%
+    width:20.5%
 }
 .inline-block{
     display:inline-block;
@@ -31,9 +31,16 @@
 .mt-50{
     margin-top:50pt
 }
-.ml-2{
+.mr-6{
+    margin-right:6.2%;
+}
+.mlt-3{
     margin-left:3%
 }
+.mlt-3 div.row:last-child{
+    margin-right:0
+}
+
 .filter{
     margin-top:40pt;
     margin-bottom:40pt;
@@ -122,9 +129,7 @@ input:focus {
     display: block;
 }
 
-.add-service label{
-    color:#fff;
-}
+
 .add-service .form-group{
     margin-top:15pt
 }
@@ -148,4 +153,26 @@ ul li.active{
     font-size: 16pt;
     text-align: center;
     margin-top: 100pt;
+}
+
+.light-purple-100
+{
+    color: #ead8f9;
+}
+.my-15{
+    margin-bottom: 15pt;
+}
+.mb-40{
+    margin-bottom: 40pt;
+}
+.pt-9{
+    padding-top:9pt
+}
+.pl-15
+{
+    padding-left:15pt
+}
+.decoration-solid
+{
+    text-decoration: underline;
 }

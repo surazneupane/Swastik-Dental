@@ -15,7 +15,8 @@ class DashboardController extends Controller
     {
 
         return view('admin.dashboard.dashboard',[
-            'notifications' => tap(auth()->user()->unreadNotifications)->markAsRead()
+//            'notifications' => tap(auth()->user()->unreadNotifications)->markAsRead()
+              'notifications' => auth()->user()->unreadNotifications
         ]);
     }
 

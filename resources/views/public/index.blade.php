@@ -135,11 +135,14 @@
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                 </div>
             </div>
+            <div class="mlt-3">
             @foreach($services as $service)
                 @php
                     $icon = $service->image;
                 @endphp
-            <div class="row mw-24 inline-block ml-2">
+
+
+            <div class="row mw-24 inline-block mr-6">
                 <div class="d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services d-block text-center">
                         <div class="icon d-flex justify-content-center align-items-center">
@@ -153,6 +156,7 @@
                 </div>
             </div>
             @endforeach
+            </div>
         </div>
         <div class="container-wrap mt-5">
             <div class="row d-flex no-gutters">
