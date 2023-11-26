@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffController;
@@ -123,6 +124,13 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
 //    Route::put('/testimony/edit/{testimony}', function(){
 //        dd('Route is hit');
 //    });
+    //Show Package page
+    Route::get('/packages',[PackageController::class,'show'])->name('admin.package');
+
+    //Add Package
+    Route::post('/add/package',[PackageController::class,'store'])->name('admin.add_package');
+
+
 } );
 
 //Admin appointment filter

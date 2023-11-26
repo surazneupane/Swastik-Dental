@@ -8,6 +8,7 @@ use App\Http\Requests\SendMessageRequest;
 use App\Mail\AppointmentSuccessfulMail;
 use App\Models\Appointment;
 use App\Models\Message;
+use App\Models\Package;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Staff;
@@ -32,7 +33,8 @@ class PublicController extends Controller
             'sliders' => Slider::with('image')->get(),
              'services' =>Service::with('image')->get(),
             'staffs' => Staff::with('image')->get(),
-            'statements' => Testimony::with('image')->get()
+            'statements' => Testimony::with('image')->get(),
+            'packages' => Package::all()
         ]) ;
     }
 

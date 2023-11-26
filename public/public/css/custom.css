@@ -176,3 +176,21 @@ ul li.active{
 {
     text-decoration: underline;
 }
+.appointment-form button{
+    background-color: #FCFDFF;
+    border: none;
+    border-radius: 20px;
+    width: 160pt;
+    color: #2E99E7;
+    height: 35pt;
+    margin-top:30pt
+}
+.appointment-form button:hover
+{
+    background-color:#2CEBBE;
+    color:#fff;
+    -webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+    cursor: pointer;
+}

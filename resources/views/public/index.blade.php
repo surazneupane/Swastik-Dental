@@ -119,7 +119,7 @@
 
                         <div class="form-group">
 {{--                            <input type="submit" value="Make an Appointment" class="btn btn-primary">--}}
-                            <button type="submit">Submit</button>
+                            <button type="submit" >Make an Appointment</button>
                         </div>
                     </form>
                 </div>
@@ -321,74 +321,28 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($packages as $package)
                 <div class="col-md-3 ftco-animate">
                     <div class="pricing-entry pb-5 text-center">
                         <div>
-                            <h3 class="mb-4">Basic</h3>
-                            <p><span class="price">$24.50</span> <span class="per">/ session</span></p>
+                            <h3 class="mb-4">{{$package->type}}</h3>
+                            <p><em>Npr.</em><span class="price">{{$package->price}}</span> <span class="per">/ session</span></p>
                         </div>
+                        @php
+                              $id = $package->id;
+                              $package_services = \App\Models\packageService::where('package_id',$id)->get();
+                            @endphp
                         <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
+                            @foreach($package_services as $package_service)
+                            <li>{{$package_service->name}}</li>
+                            @endforeach
                         </ul>
                         <p class="button text-center"><a href="#"
                                 class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
                     </div>
                 </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="pricing-entry pb-5 text-center">
-                        <div>
-                            <h3 class="mb-4">Standard</h3>
-                            <p><span class="price">$34.50</span> <span class="per">/ session</span></p>
-                        </div>
-                        <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
-                        </ul>
-                        <p class="button text-center"><a href="#"
-                                class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="pricing-entry active pb-5 text-center">
-                        <div>
-                            <h3 class="mb-4">Premium</h3>
-                            <p><span class="price">$54.50</span> <span class="per">/ session</span></p>
-                        </div>
-                        <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
-                        </ul>
-                        <p class="button text-center"><a href="#"
-                                class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="pricing-entry pb-5 text-center">
-                        <div>
-                            <h3 class="mb-4">Platinum</h3>
-                            <p><span class="price">$89.50</span> <span class="per">/ session</span></p>
-                        </div>
-                        <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
-                        </ul>
-                        <p class="button text-center"><a href="#"
-                                class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
