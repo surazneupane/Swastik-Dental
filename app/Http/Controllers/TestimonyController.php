@@ -27,7 +27,7 @@ class TestimonyController extends Controller
         $testimony->quote = $request->quote;
         $testimony->name = $request->name;
         $testimony->position =$request->position;
-        $testimony->company = $request->position;
+        $testimony->company = $request->company;
         $testimony->save();
 
         $person_image = $request->file('person_image');
@@ -65,3 +65,4 @@ class TestimonyController extends Controller
         $testimony->image()->update(['file_path'=>$filename]);
     }
 }
+

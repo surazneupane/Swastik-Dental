@@ -124,11 +124,16 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
 //    Route::put('/testimony/edit/{testimony}', function(){
 //        dd('Route is hit');
 //    });
+
     //Show Package page
     Route::get('/packages',[PackageController::class,'show'])->name('admin.package');
 
+    Route::get('/add-package',[PackageController::class,'createPackage']);
+
     //Add Package
     Route::post('/add/package',[PackageController::class,'store'])->name('admin.add_package');
+    //Delete Package
+    Route::delete('/package/{package}',[PackageController::class,'delete']);
 
 
 } );

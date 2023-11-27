@@ -6,6 +6,7 @@ use App\Http\Requests\AddServiceRequest;
 use App\Models\Image;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
@@ -23,6 +24,7 @@ class ServiceController extends Controller
     public function delete(Service $service)
     {
         $service->delete();
+        return Redirect::back()->with('message','Service deleted successfully');
     }
     public function store(AddServiceRequest $request ){
 
@@ -46,7 +48,7 @@ class ServiceController extends Controller
 
 
 
-        return back()->with('message', 'Listing updated successfully');
+        return Redirect::back()->with('message','Service added Successfully');
 
 
     }

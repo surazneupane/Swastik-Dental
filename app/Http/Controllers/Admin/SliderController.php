@@ -9,6 +9,7 @@ use App\Models\Slider;
 use App\Models\Text;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
@@ -48,7 +49,7 @@ class SliderController extends Controller
 
         $slider->text()->save($text);
 
-        return redirect()->back();
+        return Redirect::back()->with('message','Slider added successfully');
     }
 
     public function edit(Slider $slider){
@@ -67,6 +68,8 @@ class SliderController extends Controller
 
         $slider->text()->update(['heading' => $request->input('heading') ]);
         $slider->text()->update(['description' => $request->input('description')]);
+
+        return Redirect::back()->with('message','Staff updated Successfully');
     }
 
 

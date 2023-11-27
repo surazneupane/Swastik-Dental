@@ -5,12 +5,12 @@
 
             <div class="flex justify-between">
                 <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                    Sliders
+                    All services
                 </h2>
 
                 <a href="{{route('admin.add-services')}}"
                    class="pt-8 h-8 px-4 h-24 text-sm font-medium text-white transition-colors duration-150 bg-purple-600  border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple mt-20">
-                    Add Slider
+                    Add Services
                     <span class="ml-2" aria-hidden="true">+</span>
                 </a>
 
@@ -36,7 +36,7 @@
                                 <td class="px-4 py-3">
                                     <div class="flex items-center text-sm">
                                         <!-- Avatar with inset shadow -->
-                                        <div class="relative hidden w-50 mr-3 rounded-full md:block w-">
+                                        <div class="relative hidden w-12 mr-3 rounded-full md:block w-">
                                             @php
                                                 $image = $service->image;
                                             @endphp

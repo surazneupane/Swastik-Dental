@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddStaffRequest;
 use App\Models\Image;
 use App\Models\Staff;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -39,11 +40,12 @@ class StaffController extends Controller
         $new_image = new Image(['file_path'=>  $filename]);
         $staff->image()->save($new_image);
 
+        return Redirect::back()->with('message', 'Staff added successfully');
     }
 
     public function delete(Staff $staff){
         $staff->delete();
-        return redirect('/')->with('message','Listing Deleted Successfully');
+        return Redirect::back()->with('message','Staff deleted Successfully');
     }
     public function edit(Staff $staff){
         return view('admin.staff.editStaff',[
@@ -67,6 +69,8 @@ class StaffController extends Controller
         Storage::disk('public')->put($filename,file_get_contents($service_icon));
 
         $staff->image()->update(['file_path'=>$filename]);
+
+        return Redirect::back()->with('message','Staff updated Successfully');
     }
 
 }

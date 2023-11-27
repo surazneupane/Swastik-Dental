@@ -41,17 +41,25 @@ class PublicController extends Controller
 
     public function about()
     {
-        return view('public.about');
+        return view('public.about',[
+            'statements' => Testimony::with('image')->get(),
+        ]);
     }
 
     public function services()
     {
-        return view('public.services');
+        return view('public.services',[
+            'services' =>Service::with('image')->get(),
+            'packages' => Package::all()
+        ]);
     }
 
     public function doctors()
     {
-        return view('public.doctors');
+        return view('public.doctors',[
+            'staffs' => Staff::with('image')->get(),
+            'packages' => Package::all()
+        ]);
     }
 
     public function blogs()

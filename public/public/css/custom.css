@@ -194,3 +194,14 @@ ul li.active{
     transition: background-color 100ms linear;
     cursor: pointer;
 }
+.normal
+{
+    font-style: normal;
+}
+.my-package table,
+.my-package table th,
+.my-package table tr,
+.my-package table td
+{
+    border:1px solid #090808
+}

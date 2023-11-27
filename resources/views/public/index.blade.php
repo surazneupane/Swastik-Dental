@@ -326,7 +326,7 @@
                     <div class="pricing-entry pb-5 text-center">
                         <div>
                             <h3 class="mb-4">{{$package->type}}</h3>
-                            <p><em>Npr.</em><span class="price">{{$package->price}}</span> <span class="per">/ session</span></p>
+                            <p><em class="normal">Npr.</em><span class="price">{{$package->price}}</span> <span class="per">/ session</span></p>
                         </div>
                         @php
                               $id = $package->id;

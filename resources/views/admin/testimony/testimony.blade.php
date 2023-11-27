@@ -5,6 +5,7 @@
 
         <div class="container px-6 mx-auto grid">
                 <div class="flex justify-between">
+
                     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                         Testimonies
                     </h2>
@@ -16,8 +17,8 @@
                     </a>
 
                 </div>
-                @unless($testimonies->isEmpty())
 
+            @unless($testimonies->isEmpty())
                 <table class="w-full whitespace-no-wrap  ">
                     <thead>
                     <tr
@@ -106,7 +107,7 @@
                     </tbody>
                 </table>
                 @else
-                    <h2> Sorry, No Testimony found.</h2>
+                    <h2 class="empty-message"> Sorry, No Testimony found.</h2>
 
                 @endunless
             </div>

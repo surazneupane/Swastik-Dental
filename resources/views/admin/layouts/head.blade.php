@@ -10,5 +10,6 @@
     <link rel="stylesheet" href="{{ asset('public/css/custom.css') }}" />
     <script src="{{ asset('admin/js/alpinejs/dist/alpine.js') }}"></script>
     <script src="{{ asset('admin/js/init-alpine.js') }}"></script>
+{{--    <script src="//unpkg.com/alpinejs" defer></script>--}}
 </head>
 

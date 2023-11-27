@@ -26,103 +26,27 @@
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-tooth"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Teeth Whitening</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-dental-care"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Teeth Cleaning</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-tooth-with-braces"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Quality Brackets</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-anesthesia"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Modern Anesthetic</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-dental-care"></span>
+                <div class="mlt-3">
+                    @foreach($services as $service)
+                        @php
+                            $icon = $service->image;
+                        @endphp
+
+                        <div class="row mw-24 inline-block mr-6">
+                            <div class="d-flex align-self-stretch ftco-animate">
+                                <div class="media block-6 services d-block text-center">
+                                    <div class="icon d-flex justify-content-center align-items-center">
+                                        <img class="w-24 mw-100" src="{{Storage::disk('public')->url($icon['file_path'])}}" alt="" class="logo"/>
+                                    </div>
+                                    <div class="media-body p-2 mt-3">
+                                        <h3 class="heading">{{$service->title}}</h3>
+                                        <p>{{$service->description}}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Dental Calculus</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-bacteria"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Paradontosis</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-dentist"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Dental Implants</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-                    <div class="media block-6 services d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-dental-care-1"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Tooth Braces</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -187,74 +111,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 ftco-animate">
-                    <div class="pricing-entry pb-5 text-center">
-                        <div>
-                            <h3 class="mb-4">Basic</h3>
-                            <p><span class="price">$24.50</span> <span class="per">/ session</span></p>
+                @foreach($packages as $package)
+                    <div class="col-md-3 ftco-animate">
+                        <div class="pricing-entry pb-5 text-center">
+                            <div>
+                                <h3 class="mb-4">{{$package->type}}</h3>
+                                <p><em class="normal">Npr.</em><span class="price">{{$package->price}}</span> <span class="per">/ session</span></p>
+                            </div>
+                            @php
+                                $id = $package->id;
+                                $package_services = \App\Models\packageService::where('package_id',$id)->get();
+                            @endphp
+                            <ul>
+                                @foreach($package_services as $package_service)
+                                    <li>{{$package_service->name}}</li>
+                                @endforeach
+                            </ul>
+                            <p class="button text-center"><a href="#"
+                                                             class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
                         </div>
-                        <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
-                        </ul>
-                        <p class="button text-center"><a href="#"
-                                class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
                     </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="pricing-entry pb-5 text-center">
-                        <div>
-                            <h3 class="mb-4">Standard</h3>
-                            <p><span class="price">$34.50</span> <span class="per">/ session</span></p>
-                        </div>
-                        <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
-                        </ul>
-                        <p class="button text-center"><a href="#"
-                                class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="pricing-entry active pb-5 text-center">
-                        <div>
-                            <h3 class="mb-4">Premium</h3>
-                            <p><span class="price">$54.50</span> <span class="per">/ session</span></p>
-                        </div>
-                        <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
-                        </ul>
-                        <p class="button text-center"><a href="#"
-                                class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="pricing-entry pb-5 text-center">
-                        <div>
-                            <h3 class="mb-4">Platinum</h3>
-                            <p><span class="price">$89.50</span> <span class="per">/ session</span></p>
-                        </div>
-                        <ul>
-                            <li>Diagnostic Services</li>
-                            <li>Professional Consultation</li>
-                            <li>Tooth Implants</li>
-                            <li>Surgical Extractions</li>
-                            <li>Teeth Whitening</li>
-                        </ul>
-                        <p class="button text-center"><a href="#"
-                                class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
