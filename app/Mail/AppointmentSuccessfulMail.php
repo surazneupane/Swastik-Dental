@@ -16,11 +16,12 @@ class AppointmentSuccessfulMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    private $name;
+    public function __construct($name)
     {
         //
 
-
+        $this->name = $name;
     }
 
     /**
@@ -29,7 +30,7 @@ class AppointmentSuccessfulMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Appointment scheduled.',
+            subject: 'Your appointment for dental service scheduled.',
         );
     }
 
@@ -39,7 +40,7 @@ class AppointmentSuccessfulMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.test-email',
+            view: 'mail.test-email'
         );
     }
 

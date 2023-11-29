@@ -54,7 +54,7 @@
                                 </td>
 
                                 <td class="px-4 py-3">
-                                    <a class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit" href="/admin/testimony/{{$service->id}}/edit" >                        <svg
+                                    <a class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit" href="/admin/service/{{$service->id}}/edit" >                        <svg
                                             class="w-5 h-5"
                                             aria-hidden="true"
                                             fill="currentColor"

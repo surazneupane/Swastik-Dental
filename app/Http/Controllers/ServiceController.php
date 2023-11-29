@@ -18,6 +18,11 @@ class ServiceController extends Controller
             'services' => Service::all()
         ]);
     }
+    public function edit(Service $service){
+        return view('admin.services.edit',[
+            'service' => $service->load('image')
+        ]);
+    }
    public function viewAddService(){
         return view('admin.services.addServices');
    }

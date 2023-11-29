@@ -169,6 +169,45 @@
 <script src="/public/js/main.js"></script>
 
 <script>
+    var inputCounter = 2
+    function addInputField() {
+        var i = 2;
+        // Create a new input element
+        var newInput = document.createElement('input');
+        newInput.type = 'text';
+
+        newInput.name = 'dynamicInput_' + inputCounter ;
+        newInput.placeholder = 'Enter something';
+
+        inputCounter++;
+        // Create a new button element
+        var removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.textContent = 'Remove';
+        removeButton.onclick = function() {
+            removeInputField(removeButton);
+        };
+
+        // Create a new div container for the input and button
+        var container = document.createElement('div');
+        container.classList.add('input-container');
+        container.appendChild(newInput);
+        container.appendChild(removeButton);
+
+        // Append the new container to the main container
+        document.getElementById('input-container').appendChild(container);
+    }
+
+    function removeInputField(button) {
+        // Get the parent container of the button (which is the input container)
+        var container = button.parentNode;
+
+        // Remove the container from the parent
+        container.parentNode.removeChild(container);
+    }
+</script>
+
+<script>
     // Toggle the dropdown when the button is clicked
     function toggleDropdown() {
         var dropdownContent = document.getElementById("dropdown-content");
@@ -189,6 +228,7 @@
     }
 
 </script>
+
 </body>
 
 </html>

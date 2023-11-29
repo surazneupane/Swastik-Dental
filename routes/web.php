@@ -9,7 +9,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TestimonyController;
-use http\Client\Request;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\SaveAppointement;
 /*
@@ -76,6 +76,8 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::get('/add-services',[ServiceController::class,'viewAddService'])->name('admin.add-services');
     //Add services
     Route::post('/add/services',[ServiceController::class,'store']);
+    //Package edit page
+    Route::get('/service/{service}/edit',[ServiceController::class,'edit'])->middleware('auth');
     //Delete
     Route::delete('/services/{service}',[ServiceController::class,'delete'])->middleware('auth');
 
@@ -117,13 +119,9 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
 
     //Show Sliders
     Route::get('/slider',[SliderController::class,'show'])->name('admin.slider');
+    //Delete Slider
+    Route::delete('/slider/{slider}',[SliderController::class,'delete']);
 
-//    Route::put('/testimony/edit/{testimony}', function(\App\Http\Requests\AddTestimonyRequest $request){
-//       dd($request);
-//    });
-//    Route::put('/testimony/edit/{testimony}', function(){
-//        dd('Route is hit');
-//    });
 
     //Show Package page
     Route::get('/packages',[PackageController::class,'show'])->name('admin.package');
@@ -132,6 +130,14 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
 
     //Add Package
     Route::post('/add/package',[PackageController::class,'store'])->name('admin.add_package');
+//    Route::post('/add/package',function( Request $request){
+//        dd($request);
+//    });
+
+    //Package edit page
+    Route::get('/package/{package}/edit',[PackageController::class,'edit'])->middleware('auth');
+    //Package edit
+    Route::put('/edit/{package}',[PackageController::class,'update']);
     //Delete Package
     Route::delete('/package/{package}',[PackageController::class,'delete']);
 

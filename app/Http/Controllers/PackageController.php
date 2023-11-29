@@ -22,52 +22,48 @@ class PackageController extends Controller
         return view('admin.package.addPackage');
     }
 
-    public function store(AddPackageRequest $request){
+    public function store(Request $request){
 
-                $package = new Package();
-                $package->type = $request->package_type;
-                $package->price = $request->price;
-                $package->save();
+        $data = $request->all();
 
-                $package_id = $package->id;
+        $package = new Package();
+        $package->type = $request->package_type;
+        $package->price = $request->price;
+        $package->save();
 
-                 $package_service = new packageService();
-                 $package_service->package_id = $package_id;
-                 $package_service->name = $request->service_name_one;
-                 $package_service->save();
+        $package_id = $package->id;
 
-                 if($request->service_name_two != null) {
+        $serviceNames = [];
 
-                     $package_service = new packageService();
-                     $package_service->package_id = $package_id;
-                     $package_service->name = $request->service_name_two;
-                     $package_service->save();
-                 }
+        foreach ($data as $key => $value) {
 
-                if($request->service_name_three != null) {
-                    $package_service = new packageService();
-                    $package_service->package_id = $package_id;
-                    $package_service->name = $request->service_name_three;
-                    $package_service->save();
-                }
+            // Check if the key starts with "serviceName_" and has a numeric part
+            if (strpos($key, 'serviceName_') === 0 && is_numeric(substr($key, 12))) {
 
-                if($request->service_name_four !=null) {
-                    $package_service = new packageService();
-                    $package_service->package_id = $package_id;
-                    $package_service->name = $request->service_name_four;
-                    $package_service->save();
-                }
+                $package_service = new packageService();
 
-                if($request->service_name_five !=null){
-                    $package_service = new packageService();
-                    $package_service->package_id = $package_id;
-                    $package_service->name = $request->service_name_four;
-                    $package_service->save();
-                }
+                // Extract the numeric part of the key and use it as an index
+                $index = substr($key, 12);
+                $serviceNames[$index] = $value;
+                $package_service->package_id = $package_id;
+                $package_service->name = $serviceNames[$index];
+                $package_service->save();
+
+            }
+        }
         return Redirect::back()->with('message','Package added Successfully');
     }
 
+    public function edit(Package $package){
+//        dd('Route is hit');
+        $id = $package->id;
+        $services = packageService::where('package_id',$id)->get();
+        return view('admin.package.edit',[
 
+            'package' => $package,
+            'services' => $services
+        ]);
+    }
         public function delete(Package $package){
             $package->delete();
             return Redirect::back()->with('message','Package deleted Successfully');

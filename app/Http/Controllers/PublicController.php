@@ -27,14 +27,12 @@ class PublicController extends Controller
 
     public function show()
     {
-//        $sliders = Slider::all();
-//        $service = Service::all();
         return view('public.index',[
             'sliders' => Slider::with('image')->get(),
-             'services' =>Service::with('image')->get(),
-            'staffs' => Staff::with('image')->get(),
+             'services' =>Service::with('image')->limit(4)->get(),
+            'staffs' => Staff::with('image')->limit(4)->get(),
             'statements' => Testimony::with('image')->get(),
-            'packages' => Package::all()
+            'packages' => Package::limit(4)->get()
         ]) ;
     }
 
@@ -118,7 +116,7 @@ class PublicController extends Controller
         $appointment->save();
 
         if($request->input('email') != null){
-         Mail::to($request->input('email'))->send(new AppointmentSuccessfulMail() );
+         Mail::to($request->input('email'))->send(new AppointmentSuccessfulMail($request->input('name')) );
         }
 
          User::where('name','Admin')->get()->first()->notify(new AppointmentMade($appointment));

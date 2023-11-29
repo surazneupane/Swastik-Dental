@@ -136,10 +136,11 @@
                 </div>
             </div>
             <div class="mlt-3">
-            @foreach($services as $service)
-                @php
-                    $icon = $service->image;
-                @endphp
+
+                    @foreach($services as $service)
+                         @php
+                             $icon = $service->image;
+                        @endphp
 
 
             <div class="row mw-24 inline-block mr-6">
@@ -155,6 +156,7 @@
                     </div>
                 </div>
             </div>
+
             @endforeach
             </div>
         </div>
@@ -217,6 +219,7 @@
             </div>
 
             <div class="row">
+
                 @foreach($staffs as $staff)
                     @php
                          $staff_image = $staff->image;
@@ -250,7 +253,9 @@
                         </div>
                     </div>
                 </div>
+
                 @endforeach
+
             </div>
             <div class="row  mt-5 justify-conten-center">
                 <div class="col-md-8 ftco-animate">
@@ -331,7 +336,7 @@
                         @php
                               $id = $package->id;
                               $package_services = \App\Models\packageService::where('package_id',$id)->get();
-                            @endphp
+                        @endphp
                         <ul>
                             @foreach($package_services as $package_service)
                             <li>{{$package_service->name}}</li>

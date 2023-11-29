@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddSliderRequest;
 use App\Models\Image;
 use App\Models\Slider;
+use App\Models\Staff;
 use App\Models\Text;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,6 +71,13 @@ class SliderController extends Controller
         $slider->text()->update(['description' => $request->input('description')]);
 
         return Redirect::back()->with('message','Staff updated Successfully');
+    }
+
+    public function delete(Slider $slider){
+        $slider->delete();
+
+            return Redirect::back()->with('message','Slider deleted Successfully');
+
     }
 
 
