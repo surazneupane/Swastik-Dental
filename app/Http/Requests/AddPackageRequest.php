@@ -25,7 +25,7 @@ class AddPackageRequest extends FormRequest
 
 
                     return [
-                        'package_type' => ['required','max:15'],
+                        'package_type' => ['required','max:25'],
                         'price' => ['required','integer'],
                         'service_name_1' =>['required','max:20'],
                     ];

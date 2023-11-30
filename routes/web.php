@@ -130,14 +130,16 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
 
     //Add Package
     Route::post('/add/package',[PackageController::class,'store'])->name('admin.add_package');
-//    Route::post('/add/package',function( Request $request){
-//        dd($request);
-//    });
 
     //Package edit page
     Route::get('/package/{package}/edit',[PackageController::class,'edit'])->middleware('auth');
     //Package edit
-    Route::put('/edit/{package}',[PackageController::class,'update']);
+    Route::put('/package/edit/{package}',[PackageController::class,'update']);
+
+//    Route::put('/package/edit/{package}',function(){
+//        dd('Route is hit');
+//    });
+
     //Delete Package
     Route::delete('/package/{package}',[PackageController::class,'delete']);
 

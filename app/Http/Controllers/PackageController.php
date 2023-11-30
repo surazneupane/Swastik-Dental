@@ -22,7 +22,7 @@ class PackageController extends Controller
         return view('admin.package.addPackage');
     }
 
-    public function store(Request $request){
+    public function store(AddPackageRequest $request){
 
         $data = $request->all();
 
@@ -64,9 +64,46 @@ class PackageController extends Controller
             'services' => $services
         ]);
     }
+
+    public function update(Request $request, Package $package ){
+
+        $package->type = $request->input('package_type');
+        $package->price = $request->input('price');
+        $package->save();
+
+        $data = $request->all();
+        $id = $package->id;
+
+        $package_service = packageService::where('package_id',$id)->get();
+
+        $array_count=0;
+        foreach ($data as $key => $value) {
+
+            // Check if the key starts with "serviceName_" and has a numeric part
+            if (strpos($key, 'serviceName_') === 0 && is_numeric(substr($key, 12))) {
+
+                if ($package_service[$array_count]->name != $value) {
+                    $id = $package_service[$array_count]->id;
+
+                    $update_package_service = packageService::find($id);
+                    $update_package_service->name = $value;
+                    $update_package_service->save();
+
+
+                }
+                $array_count++;
+
+            }
+        }
+        return Redirect::back()->with('message','Package deleted Successfully');
+    }
+
+
         public function delete(Package $package){
             $package->delete();
             return Redirect::back()->with('message','Package deleted Successfully');
         }
+
+
 
 }
