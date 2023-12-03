@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FilterAppointmentRequest;
 use App\Models\Appointment;
 use App\Models\Slider;
+use App\Notifications\AppointmentMade;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,6 +19,20 @@ class DashboardController extends Controller
 //            'notifications' => tap(auth()->user()->unreadNotifications)->markAsRead()
               'notifications' => auth()->user()->unreadNotifications
         ]);
+    }
+
+    public function markNotification($notificationId){
+//     dd('Route is hit');
+//          dd('Route is hit');
+
+        auth()->user()
+            ->unreadNotifications
+            ->when($notificationId, function ($query) use ($notificationId) {
+                return $query->where('id', $notificationId);
+            })
+            ->markAsRead();
+
+        return response()->noContent();
     }
 
     public function appointment()

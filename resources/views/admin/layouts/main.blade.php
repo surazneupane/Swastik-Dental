@@ -15,18 +15,30 @@
 
             var i=2;
 
+            //Create a new label
+            var newLabel = document.createElement('label');
+                newLabel.innerHTML = "Service Name:";
+                newLabel.setAttribute("for", "added_service");
+            newLabel.classList.add( "text-sm","text-gray-700", "dark:text-gray-400");
+
             // Create a new input element
             var newInput = document.createElement('input');
             newInput.type = 'text';
 
+
             newInput.name = 'serviceName_' + inputCounter ;
-            newInput.placeholder = 'Enter something';
+            newInput.placeholder = 'Name of service';
+
+            newInput.setAttribute("id", "added_service");
+
+            newInput.classList.add("block", "w-full", "mt-1", "text-sm" , "dark:border-gray-600", "dark:bg-gray-700", "focus:border-purple-400", "focus:outline-none", "focus:shadow-outline-purple", "dark:text-gray-300" , "dark:focus:shadow-outline-gray", "form-input");
 
             inputCounter++;
             // Create a new button element
             var removeButton = document.createElement('button');
             removeButton.type = 'button';
             removeButton.textContent = 'Remove';
+            removeButton.classList.add("right","mt-1","light-red-100","underline","text-sm");
             removeButton.onclick = function() {
                 removeInputField(removeButton);
             };
@@ -34,6 +46,7 @@
             // Create a new div container for the input and button
             var container = document.createElement('div');
             container.classList.add('input-container');
+            container.appendChild(newLabel);
             container.appendChild(newInput);
             container.appendChild(removeButton);
 

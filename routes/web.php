@@ -136,9 +136,13 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     //Package edit
     Route::put('/package/edit/{package}',[PackageController::class,'update']);
 
-//    Route::put('/package/edit/{package}',function(){
-//        dd('Route is hit');
+    Route::post('/mark-as-read/{notificationId}',[DashboardController::class,'markNotification'])->name('admin.mark-as-read');
+
+//    Route::post('/mark-as-read/{notification}', function(){
+//        dd('route is hit');
 //    });
+
+
 
     //Delete Package
     Route::delete('/package/{package}',[PackageController::class,'delete']);

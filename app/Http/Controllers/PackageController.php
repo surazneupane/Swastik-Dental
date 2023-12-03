@@ -89,7 +89,6 @@ class PackageController extends Controller
                     $update_package_service->name = $value;
                     $update_package_service->save();
 
-
                 }
                 $array_count++;
 

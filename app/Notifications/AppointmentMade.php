@@ -14,9 +14,10 @@ class AppointmentMade extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct($appointment)
+//    public function __construct($appointment)
+      public function __construct()
     {
-        $this->appointment = $appointment;
+//        $this->appointment = $appointment;
     }
 
     /**
@@ -52,4 +53,6 @@ class AppointmentMade extends Notification
             'name' => $this->appointment->name,
         ];
     }
+
+
 }

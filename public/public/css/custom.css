@@ -159,6 +159,10 @@ ul li.active{
 {
     color: #ead8f9;
 }
+.light-purple-300{
+    color: #a59ce3;
+}
+
 .my-15{
     margin-bottom: 15pt;
 }
@@ -205,3 +209,18 @@ ul li.active{
 {
     border:1px solid #090808
 }
+.right{
+    float:right
+}
+
+.light-red-100{
+    color:#ea5f5f
+}
+.underline{
+    text-decoration: underline;
+}
+.clearfix{
+
+    clear:both;
+}
+

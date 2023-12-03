@@ -44,8 +44,8 @@
                     </label>
                     </div>
 
-                    <button type="button" onclick="addInputField()">Add Input Field</button>
-
+                    <button class="right light-purple-300 mt-20 text-sm underline" type="button" onclick="addInputField()">Add more service.</button>
+                   <div class="clearfix"></div>
                 </div>
                 <button  type ="submit" class="ma-center h-8 mw-120 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600  border-transparent  active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                 >
