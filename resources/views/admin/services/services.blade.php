@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 @section('body')
     <main class="h-full overflow-y-auto">
-        <div class="container px-6 mx-auto grid">
+        <div class="container px-6 mx-auto grid ">
 
             <div class="flex justify-between">
                 <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">

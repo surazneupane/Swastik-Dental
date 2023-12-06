@@ -143,7 +143,7 @@
                         @endphp
 
 
-            <div class="row mw-24 inline-block mr-6">
+            <div class="row mw-24 inline-block mr-6 ">
                 <div class="d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services d-block text-center">
                         <div class="icon d-flex justify-content-center align-items-center">
