@@ -109,26 +109,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#">
+                <form action="{{route('public.message-appointment')}}" method="post">
+                    @csrf
                     <div class="form-group">
                         <!-- <label for="appointment_name" class="text-black">Full Name</label> -->
-                        <input type="text" class="form-control" id="appointment_name" placeholder="Full Name">
+                        <input type="text" class="form-control" id="appointment_name" placeholder="Full Name" name="name">
                     </div>
                     <div class="form-group">
                         <!-- <label for="appointment_email" class="text-black">Email</label> -->
-                        <input type="text" class="form-control" id="appointment_email" placeholder="Email">
+                        <input type="text" class="form-control" id="appointment_email" placeholder="Email" name="email">
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- <label for="appointment_date" class="text-black">Date</label> -->
-                                <input type="text" class="form-control appointment_date" placeholder="Date">
+                                <input type="text" class="form-control appointment_date" placeholder="Date" name="date">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- <label for="appointment_time" class="text-black">Time</label> -->
-                                <input type="text" class="form-control appointment_time" placeholder="Time">
+                                <input type="text" class="form-control appointment_time" placeholder="Time" name="time">
                             </div>
                         </div>
                     </div>
@@ -136,8 +137,8 @@
 
                     <div class="form-group">
                         <!-- <label for="appointment_message" class="text-black">Message</label> -->
-                        <textarea name="" id="appointment_message" class="form-control" cols="30" rows="10"
-                            placeholder="Message"></textarea>
+                        <textarea  id="appointment_message" class="form-control" cols="30" rows="10"
+                            placeholder="Message" name="message"></textarea>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Make an Appointment" class="btn btn-primary">
@@ -228,6 +229,72 @@
     }
 
 </script>
+<script>
+
+    var count = 0;
+    const checkedBoxes = document.querySelectorAll('input[type="checkbox"]');
+    var title= document.getElementById("dropdown-title");
+
+    for(const checkbox of checkedBoxes){
+
+        checkbox.addEventListener('change', function() {
+
+            if (this.checked) {
+                count++
+                if (count <= 1) {
+                    title.value = checkbox.name;
+                } else if (count == 2) {
+                    title.value ="2 services";
+                }else if (count == 3){
+                    title.value ="3 services";
+                }else{
+                    title.value ="4 services";
+                    console.log('Four checkbox checked');
+                }
+            }
+            else if(this.checked == false){
+                count--
+                if (count == 0) {
+                    title.value = "Select Services";
+                }
+                else if (count <= 1) {
+                    const getCheckedBox = document.querySelector('input[type="checkbox"]:checked')
+                    console.log(count);
+                    console.log(checkbox);
+                    console.log(`Current unchecked box is: ${checkbox.name}`);
+                    console.log(`Remaining checked one  is:"${getCheckedBox.name}" is checked`)
+                    title.value = getCheckedBox.name;
+                } else if (count == 2) {
+                    title.value ="2 services";
+                }else if (count == 3){
+                    title.value ="3 services";
+                }else{
+                    title.value ="4 services";
+                }
+            }
+        });
+    }
+
+    // const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    // const x = 3;
+    // console.log(x);
+
+    // for(const checkbox of checkedBoxes)
+    // {
+    //
+    //     checkbox.addEventListener('change', function() {
+    //         if (this.checked) {
+    //             console.log(`Checkbox with id "${checkbox.id}" is checked`);
+    //             console.log('Checkbox is checked');
+    //         } else {
+    //             console.log('Checkbox is not checked');
+    //         }
+    //     });
+    //
+    // }
+
+</script>
+
 
 </body>
 

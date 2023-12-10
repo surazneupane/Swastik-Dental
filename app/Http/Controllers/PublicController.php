@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\MessageAppointmentRequest;
 use App\Http\Requests\SaveAppointement;
 use App\Http\Requests\SendMessageRequest;
 use App\Mail\AppointmentSuccessfulMail;
 use App\Models\Appointment;
 use App\Models\Message;
+use App\Models\MessageAppointment;
 use App\Models\Package;
 use App\Models\Service;
 use App\Models\Slider;
@@ -137,6 +139,37 @@ class PublicController extends Controller
         User::where('name','Admin')->get()->first()->notify(new SendMessageSuccessful($message));
 
         return redirect('/')->with('message','Message sent successfully');
+    }
+
+    public function allot(MessageAppointmentRequest $request){
+//        dd($request);
+        //Format input date to YYMMDD
+        $inputDate = $request->input('date');
+        $inputDate = str_replace("/","",$inputDate);
+
+        $carbonDate  = Carbon::createFromFormat('mdY',$inputDate);
+        $carbonDate  = $carbonDate->format('Y-m-d');
+
+        //Format time
+        $inputTime = $request->input('time');
+        $inputTime = preg_replace('/\s*:\s*/', ':', $inputTime);
+
+        $time = date("H:i", strtotime($inputTime));
+
+        $appointment = new MessageAppointment();
+        $appointment->name = $request->input('name');
+        $appointment->email = $request->input('email');
+        $appointment->date = $carbonDate;
+        $appointment->time = $time;
+        $appointment->message = $request->input('message');
+
+        $appointment->save();
+//                       'name',
+//           'email',
+//            'date',
+//            'time',
+//            'message'
+
     }
 
 }

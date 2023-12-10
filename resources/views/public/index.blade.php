@@ -17,7 +17,12 @@
                             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$slider->text->heading}}</h1>
                             <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$slider->text->description}}</p>
                             <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-                                <a href="#"  class="btn btn-primary px-4 py-3">Make an Appointment</a></p>
+                                <a href="{{route('public.contact')}}" class="btn btn-primary px-4 py-3" data-toggle="modal"
+                                   data-target="#modalRequest"><span>Make an Appointment</span></a></p>
+
+
+{{--                            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">--}}
+{{--                                <a href="#"  class="btn btn-primary px-4 py-3">Make an Appointment</a></p>--}}
                         </div>
                     </div>
                 </div>
@@ -57,7 +62,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="dropdown">
-                                    <input type="button" class="dropbtn"  value="Select Services" onclick="toggleDropdown()">
+                                    <input id ="dropdown-title" type="button" class="dropbtn"  value="Select Services" onclick="toggleDropdown()">
                                     <div id="dropdown-content" class="dropdown-content">
                                         <label for="option1"><input type="checkbox" id="option1" class="checkbox" name="whitening">Teeth Whitening</label>
                                         <label for="option2"><input type="checkbox" id="option2" class="checkbox" name="cleaning">Teeth Cleaning</label>

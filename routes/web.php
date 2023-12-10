@@ -40,10 +40,11 @@ Route::post('/public/message', [PublicController::class,'send']);
 
 Route::get('/sliders/{slider}/edit',[SliderController::class,'edit']);
 Route::post('/make/appointment',[PublicController::class, 'reserve']);
+Route::post('/make/message-appointment',[PublicController::class,'allot'])->name('public.message-appointment');
 
-//Route::post('/make/appointment',function(){
+//Route::post('/make/message-appointment',function(){
 //    dd('route is hit');
-//});
+//})->name('public.message-appointment');
 
 Route::get('test-notification', [App\Http\Controllers\TestingController::class, 'store']);
 //Route::get('test-notification',function(){
@@ -70,6 +71,8 @@ Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::put('/edit/{slider}',[SliderController::class,'update']);
     //Appointment
     Route::get('/appointments' ,[DashboardController::class,'appointment'])->name('admin.appointments');
+    //Message Appointment
+    Route::get('/message-appointments',[DashboardController::class,'messageAppointment'])->name('admin.message-appointments');
     //Services
     Route::get('/services',[ServiceController::class,'show'])->name('admin.services');
     //View add service page

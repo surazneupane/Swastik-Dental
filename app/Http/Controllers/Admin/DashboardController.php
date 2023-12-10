@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FilterAppointmentRequest;
 use App\Models\Appointment;
+use App\Models\MessageAppointment;
 use App\Models\Slider;
 use App\Notifications\AppointmentMade;
 use Illuminate\Http\Request;
@@ -37,8 +38,14 @@ class DashboardController extends Controller
 
     public function appointment()
     {
-        $appointment = Appointment::orderBy('date', 'asc')->get();
+        $appointment = Appointment::orderBy('date', 'asc')->paginate(15);
         return view('admin.appointment.appointment', [
+            'appointments' => $appointment
+        ]);
+    }
+    public function messageAppointment(){
+        $appointment = MessageAppointment::orderBy('date', 'asc')->get();
+        return view('admin.appointment.messageAppointment',[
             'appointments' => $appointment
         ]);
     }
